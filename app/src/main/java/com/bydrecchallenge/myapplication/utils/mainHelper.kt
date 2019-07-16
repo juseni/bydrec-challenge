@@ -1,5 +1,9 @@
 package com.bydrecchallenge.myapplication.utils
 
+import android.content.Context
+import android.content.res.Resources
+import android.support.v4.os.ConfigurationCompat
+import com.bydrecchallenge.myapplication.R
 import com.bydrecchallenge.myapplication.utils.Const.Companion.API_DATE_FORMAT
 import com.bydrecchallenge.myapplication.utils.Const.Companion.DAY_OF_WEEK_FORMAT
 import com.bydrecchallenge.myapplication.utils.Const.Companion.MMM_DD_YYYY_HH_MM_FORMAT
@@ -11,10 +15,10 @@ import java.util.*
 import java.util.Calendar.DAY_OF_MONTH
 import java.util.Calendar.DAY_OF_WEEK
 
-fun stringFormateDate(stringDate: String): String {
+fun stringFormateDate(stringDate: String, context: Context): String {
     val formattedDate = getFormattedDate(stringDate)
     val dateFormat = SimpleDateFormat(MMM_DD_YYYY_HH_MM_FORMAT, Locale.ENGLISH)
-    return dateFormat.format(formattedDate).replace("-", "at")
+    return dateFormat.format(formattedDate).replace("-", context.resources.getString(R.string.date_separator))
 }
 
 fun getDayOrDayWeek(stringDate: String, dayType: Int): String {
@@ -23,7 +27,8 @@ fun getDayOrDayWeek(stringDate: String, dayType: Int): String {
     calendar.time = formattedDate
     return when (dayType) {
         DAY_OF_WEEK -> {
-            val apiDateFormat = SimpleDateFormat(DAY_OF_WEEK_FORMAT, Locale.US)
+            val apiDateFormat = SimpleDateFormat(DAY_OF_WEEK_FORMAT,
+                ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0))
             apiDateFormat.format(formattedDate)
         }
         DAY_OF_MONTH -> calendar.get(DAY_OF_MONTH).toString()
@@ -37,7 +42,8 @@ fun getFormattedDate(stringDate: String): Date {
 }
 
 fun getMonthFormatted(date: Date): String {
-    val dateFormat = SimpleDateFormat(MONTH_FORMAT, Locale.ENGLISH)
+    val dateFormat = SimpleDateFormat(MONTH_FORMAT,
+        ConfigurationCompat.getLocales(Resources.getSystem().configuration).get(0))
     return dateFormat.format(date)
 }
 

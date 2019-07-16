@@ -1,5 +1,6 @@
 package com.bydrecchallenge.myapplication.adapters
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.support.v7.util.DiffUtil
@@ -26,9 +27,12 @@ import java.util.*
 
 class LisItemMatchAdapter(private var matchRowList: List<MatchRow>) : Adapter<MatchViewHolder>() {
 
+    private lateinit var context: Context
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
-        val layoutInflater = from(parent.context)
-        val inflatedView : View = when (viewType) {
+        context = parent.context
+        val layoutInflater = from(context)
+        val inflatedView: View = when (viewType) {
             RowType.ITEM.ordinal -> layoutInflater.inflate(R.layout.list_item_soccer_matches, parent, false)
             else -> layoutInflater.inflate(R.layout.list_item_header_month, parent, false)
         }
@@ -47,17 +51,19 @@ class LisItemMatchAdapter(private var matchRowList: List<MatchRow>) : Adapter<Ma
             val matchInformationItem = matchItemRow.item
 
             matchInformationItem!!.let {
-                holder.competitionName.text = it.competitionStage.competition.name
-                holder.stadiumName.text = it.venue.name
-                holder.dateMatch.text = stringFormateDate(it.date)
-                holder.homeTeam.text = it.homeTeam.shortName
-                holder.awayTeam.text = it.awayTeam.shortName
+                with(holder) {
+                    competitionName.text = it.competitionStage.competition.name
+                    stadiumName.text = it.venue.name
+                    dateMatch.text = stringFormateDate(it.date, context)
+                    homeTeam.text = it.homeTeam.shortName
+                    awayTeam.text = it.awayTeam.shortName
 
-                if (isResultMatchInformation(it.type)) {
-                    setResultMatches(holder, it)
+                    if (isResultMatchInformation(it.type)) {
+                        setResultMatches(this, it)
 
-                } else {
-                    setFixtureMatches(holder, it)
+                    } else {
+                        setFixtureMatches(this, it)
+                    }
                 }
             }
         } else {
@@ -126,7 +132,8 @@ class LisItemMatchAdapter(private var matchRowList: List<MatchRow>) : Adapter<Ma
 }
 
 
-class MatchRowDiffCallback(private val newRows : List<MatchRow>, private val oldRows : List<MatchRow>) : DiffUtil.Callback() {
+class MatchRowDiffCallback(private val newRows: List<MatchRow>, private val oldRows: List<MatchRow>) :
+    DiffUtil.Callback() {
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val oldRow = oldRows[oldItemPosition]
         val newRow = newRows[newItemPosition]

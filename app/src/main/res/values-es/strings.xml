@@ -9,4 +9,5 @@
     <string name="button_try">Reintentar</string>
     <string name="clear_filter">Borrar filtro</string>
     <string name="empty_state_text">Sin datos</string>
+    <string name="date_separator">a las</string>
 </resources>
