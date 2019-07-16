@@ -33,6 +33,8 @@ class MainPresenter @Inject constructor(private val interactor: BydrecDataIntera
     lateinit var viewPager: ViewPager
     lateinit var tabLayout: TabLayout
     lateinit var context: Context
+
+    var selectedTab = Const.FIXTURE_FRAGMENT_POSITION
     var championshipIdFilter = Const.NO_FILTER
 
     override fun setView(view: MainView) {
@@ -109,11 +111,15 @@ class MainPresenter @Inject constructor(private val interactor: BydrecDataIntera
         fragments.add(fixtureFragmentInstance)
         fragments.add(resultFragmentInstance)
 
-        val adapter = TabAdapter(context, fragmentManager, tabLayout!!.tabCount, fragments)
+        val adapter = TabAdapter(context, fragmentManager, tabLayout.tabCount, fragments)
 
-        var tabSelectedListener = object : TabLayout.OnTabSelectedListener {
+        val tabSelectedListener = object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                viewPager!!.currentItem = tab.position
+                tab.position.let {
+                    viewPager.currentItem = it
+                    selectedTab = it
+                }
+
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -128,6 +134,7 @@ class MainPresenter @Inject constructor(private val interactor: BydrecDataIntera
         view.setOnTabSelectedListener(tabSelectedListener)
         view.setOnPageChangedListener()
         view.hideLoading()
+        view.selectTab(selectedTab)
         view.setViewPagerVisibility(true)
         view.setFilterContainerVisibility(true)
     }

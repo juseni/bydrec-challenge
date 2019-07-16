@@ -2,7 +2,7 @@ package com.bydrecchallenge.myapplication.utils
 
 import com.bydrecchallenge.myapplication.utils.Const.Companion.API_DATE_FORMAT
 import com.bydrecchallenge.myapplication.utils.Const.Companion.DAY_OF_WEEK_FORMAT
-import com.bydrecchallenge.myapplication.utils.Const.Companion.DD_MMM_YYYY_HH_MM_FORMAT
+import com.bydrecchallenge.myapplication.utils.Const.Companion.MMM_DD_YYYY_HH_MM_FORMAT
 import com.bydrecchallenge.myapplication.utils.Const.Companion.MONTH_FORMAT
 import com.bydrecchallenge.myapplication.utils.Const.Companion.POSTPONED_STATE
 import com.bydrecchallenge.myapplication.utils.Const.Companion.TYPE_MATCH_INFORMATION
@@ -13,7 +13,7 @@ import java.util.Calendar.DAY_OF_WEEK
 
 fun stringFormateDate(stringDate: String): String {
     val formattedDate = getFormattedDate(stringDate)
-    val dateFormat = SimpleDateFormat(DD_MMM_YYYY_HH_MM_FORMAT, Locale.ENGLISH)
+    val dateFormat = SimpleDateFormat(MMM_DD_YYYY_HH_MM_FORMAT, Locale.ENGLISH)
     return dateFormat.format(formattedDate).replace("-", "at")
 }
 

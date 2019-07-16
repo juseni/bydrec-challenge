@@ -38,8 +38,9 @@ class MainActivity : AppCompatActivity(), MainView, OnClickListener, OnClickErro
         AppManager.APP_DAGGER_COMPONENT.inject(this)
 
         intent.extras?.let {
-            if (it.containsKey(Const.ID_CHAMPIONSHIP_KEY)) {
+            if (it.containsKey(Const.ID_CHAMPIONSHIP_KEY) && it.containsKey(Const.TAB_SELECTED_KEY)) {
                 presenter.championshipIdFilter = it.getInt(Const.ID_CHAMPIONSHIP_KEY)
+                presenter.selectedTab = it.getInt(Const.TAB_SELECTED_KEY)
             }
         }
 
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity(), MainView, OnClickListener, OnClickErro
                 finish()
                 val bundle = Bundle()
                 bundle.putInt(Const.ID_CHAMPIONSHIP_KEY, it!!)
+                bundle.putInt(Const.TAB_SELECTED_KEY, presenter.selectedTab)
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -134,6 +136,10 @@ class MainActivity : AppCompatActivity(), MainView, OnClickListener, OnClickErro
 
     override fun onErrorClicked(which: Int) {
         presenter.init()
+    }
+
+    override fun selectTab(position: Int) {
+        tabLayout.getTabAt(position)?.select()
     }
 
 

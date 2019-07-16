@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="result_text">Resultados</string>
+    <string name="fixture_text">Programación</string>
+    <string name="postponed_text">Pospuesto</string>
+    <string name="filter_text">Filtro</string>
+    <string name="error_text">Advertencia!</string>
+    <string name="error_message">La información de los partidos no está disponible en estos momentos\nPor favor intente más tarde</string>
+    <string name="button_try">Reintentar</string>
+    <string name="clear_filter">Borrar filtro</string>
+    <string name="empty_state_text">Sin datos</string>
 </resources>

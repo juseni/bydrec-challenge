@@ -32,16 +32,20 @@ class ResultPresenter @Inject constructor(): Presenter<ResultView> {
     }
 
     private fun sortResultMatchesInformation() {
-        resultMatchesByMonth = matchesInformation.groupBy {
-            val date = getFormattedDate(it.date)
-            getMonthFormatted(date)
-        }
+        if (matchesInformation.isNotEmpty()) {
+            resultMatchesByMonth = matchesInformation.groupBy {
+                val date = getFormattedDate(it.date)
+                getMonthFormatted(date)
+            }
 
-        val newMatchRows = ArrayList<MatchRow>()
-        for ((key, value) in resultMatchesByMonth) {
-            newMatchRows.add(MatchRow(RowType.HEADER, null, key))
-            value.mapTo(newMatchRows) { MatchRow(RowType.ITEM, it, null) }
+            val newMatchRows = ArrayList<MatchRow>()
+            for ((key, value) in resultMatchesByMonth) {
+                newMatchRows.add(MatchRow(RowType.HEADER, null, key))
+                value.mapTo(newMatchRows) { MatchRow(RowType.ITEM, it, null) }
+            }
+            displayResultMatches(newMatchRows)
+        } else {
+            view.showEmptyState()
         }
-        displayResultMatches(newMatchRows)
     }
 }

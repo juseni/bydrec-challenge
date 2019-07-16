@@ -5,4 +5,6 @@ import com.bydrecchallenge.myapplication.adapters.LisItemMatchAdapter
 interface ResultView {
 
     fun setRecyclerViewAdapter(adapter: LisItemMatchAdapter)
+
+    fun showEmptyState()
 }

@@ -33,16 +33,20 @@ class FixturePresenter @Inject constructor(): Presenter<FixtureView> {
     }
 
     private fun sortFixtureMatchesInformation() {
-        fixtureMatchesByMonth = matchesInformation.groupBy {
-            val date = getFormattedDate(it.date)
-            getMonthFormatted(date)
-        }
+        if (matchesInformation.isNotEmpty()) {
+            fixtureMatchesByMonth = matchesInformation.groupBy {
+                val date = getFormattedDate(it.date)
+                getMonthFormatted(date)
+            }
 
-        val newMatchRows = ArrayList<MatchRow>()
-        for ((key, value) in fixtureMatchesByMonth) {
-            newMatchRows.add(MatchRow(RowType.HEADER, null, key))
-            value.mapTo(newMatchRows) { MatchRow(RowType.ITEM, it, null) }
+            val newMatchRows = ArrayList<MatchRow>()
+            for ((key, value) in fixtureMatchesByMonth) {
+                newMatchRows.add(MatchRow(RowType.HEADER, null, key))
+                value.mapTo(newMatchRows) { MatchRow(RowType.ITEM, it, null) }
+            }
+            displayFixtureMatches(newMatchRows)
+        } else {
+            view.showEmptyState()
         }
-        displayFixtureMatches(newMatchRows)
     }
 }

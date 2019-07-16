@@ -15,6 +15,10 @@
             app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
             app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
             app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
-            app:fastScrollVerticalTrackDrawable="@drawable/line_drawable">>
+            app:fastScrollVerticalTrackDrawable="@drawable/line_drawable">
     </android.support.v7.widget.RecyclerView>
+
+    <include android:id="@+id/resultEmptyState"
+             layout="@layout/empty_state"
+             android:visibility="gone"/>
 </FrameLayout>

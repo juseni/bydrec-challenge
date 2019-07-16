@@ -27,4 +27,6 @@ interface MainView {
 
     fun callChampionshipFilterScreen(championshipItems: ChampionshipItems)
 
+    fun selectTab(position: Int)
+
 }

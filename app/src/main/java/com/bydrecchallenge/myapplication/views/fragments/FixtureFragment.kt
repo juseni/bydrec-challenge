@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 
 import com.bydrecchallenge.myapplication.R
@@ -63,6 +65,13 @@ class FixtureFragment : Fragment(), FixtureView {
         if (isAdded) {
             recyclerViewFixture.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             recyclerViewFixture.adapter = adapter
+        }
+    }
+
+    override fun showEmptyState() {
+        if (isAdded) {
+            recyclerViewFixture.visibility = GONE
+            fixtureEmptyState.visibility = VISIBLE
         }
     }
 }

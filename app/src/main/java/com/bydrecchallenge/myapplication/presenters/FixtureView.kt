@@ -6,5 +6,7 @@ interface FixtureView {
 
     fun setupRecyclerView(adapter: LisItemMatchAdapter)
 
+    fun showEmptyState()
+
 
 }
