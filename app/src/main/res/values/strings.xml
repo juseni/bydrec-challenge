@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Bydrec Challenge</string>
+    <string name="result_text">Results</string>
+    <string name="fixture_text">Fixtures</string>
+    <string name="line_separator">|</string>
+    <string name="postponed_text">Postponed</string>
+    <string name="filter_text">Filter</string>
+    <string name="error_text">Warning!</string>
+    <string name="error_message">Matches information is unavailable at this moment\nPlease try again later</string>
+    <string name="button_try">Try Again</string>
+    <string name="clear_filter">Clear filter</string>
+</resources>

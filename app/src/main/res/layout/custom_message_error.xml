@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:background="@color/lightGrey">
+
+    <TextView
+            style="@style/BigTextInfo"
+            android:paddingTop="@dimen/dimen_10dp"
+            android:text="@string/error_text"/>
+    <TextView
+            style="@style/BigTextInfo"
+            android:layout_marginTop="@dimen/dimen_45dp"
+            android:text="@string/error_message"
+            android:gravity="center"/>
+
+    <Button
+            android:id="@+id/tryBtnError"
+            style="@style/ButtonRedBackgroundWhiteText"
+            android:layout_marginBottom="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dimen_20dp"
+            android:paddingRight="@dimen/dimen_20dp"
+            android:text="@string/button_try"/>
+
+</LinearLayout>

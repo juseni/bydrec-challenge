@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dimen_15dp">
+
+    <TextView
+            android:id="@+id/competitionName"
+            style="@style/BigTextInfo"
+            android:paddingStart="@dimen/dimen_15dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/markot_book"
+            tools:text="Champions League"/>
+
+    <LinearLayout
+            android:id="@+id/matchBasicInfoContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dimen_15dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dimen_2dp"
+            android:layout_below="@+id/competitionName">
+
+        <TextView
+                android:id="@+id/stadiumName"
+                style="@style/SmallTextInfo"
+                tools:text="Stamford Bridge"/>
+
+        <TextView
+                style="@style/SmallTextInfo"
+                android:layout_marginStart="@dimen/dimen_3dp"
+                android:layout_marginEnd="@dimen/dimen_3dp"
+                android:text="@string/line_separator"/>
+
+        <TextView
+                android:id="@+id/dateMatch"
+                style="@style/SmallTextInfo"
+                tools:text="Sep 12, 2017 at 20:00"/>
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/postponedMatch"
+            style="@style/SmallTextInfo"
+            android:fontFamily="@font/markot_book"
+            android:textColor="@android:color/white"
+            android:paddingStart="@dimen/dimen_3dp"
+            android:paddingEnd="@dimen/dimen_3dp"
+            android:paddingTop="@dimen/dimen_3dp"
+            android:paddingBottom="@dimen/dimen_3dp"
+            android:background="@color/darkRed"
+            android:text="@string/postponed_text"
+            android:layout_marginEnd="@dimen/dimen_15dp"
+            android:textAllCaps="true"
+            android:layout_alignEnd="@+id/competitionName"
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            tools:visibility="visible"/>
+
+    <LinearLayout
+            android:id="@+id/teamContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_25dp"
+            android:layout_below="@+id/matchBasicInfoContainer">
+
+        <TextView
+                android:id="@+id/homeTeam"
+                style="@style/BigTextInfo"
+                tools:text="Chelsea FC"/>
+
+        <TextView
+                android:id="@+id/awayTeam"
+                style="@style/BigTextInfo"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                tools:text="Everton"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/dayScoreMatchContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="@dimen/dimen_15dp"
+            android:layout_marginTop="@dimen/dimen_25dp"
+            android:paddingEnd="@dimen/dimen_45dp"
+            android:layout_below="@+id/matchBasicInfoContainer"
+            android:layout_alignEnd="@+id/teamContainer"
+            android:layout_centerVertical="true">
+
+        <View
+                android:id="@+id/lineDateSeparator"
+                android:layout_width="@dimen/dimen_2dp"
+                android:layout_height="fill_parent"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:background="@color/darkGrey"/>
+
+        <RelativeLayout
+                android:id="@+id/dayMatchContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/dayNumberMatch"
+                    style="@style/BigTextInfo"
+                    android:fontFamily="@font/markot_book"
+                    android:textSize="@dimen/size_24sp"
+                    android:layout_centerHorizontal="true"
+                    tools:text="12"/>
+
+            <TextView
+                    android:id="@+id/dayWeekMatch"
+                    style="@style/BigTextInfo"
+                    android:layout_below="@+id/dayNumberMatch"
+                    android:layout_marginTop="@dimen/dimen_2dp"
+                    android:textAllCaps="true"
+                    tools:text="TUE"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/scoreMatchContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+            <TextView
+                    android:id="@+id/localScore"
+                    style="@style/BigTextInfo"
+                    android:textSize="@dimen/size_16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_alignParentTop="true"
+                    tools:text="2"/>
+
+            <TextView
+                    android:id="@+id/awayScore"
+                    style="@style/BigTextInfo"
+                    android:layout_below="@+id/localScore"
+                    android:textSize="@dimen/size_16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    tools:text="0"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_below="@+id/teamContainer"
+            android:background="@color/darkGrey"/>
+
+</RelativeLayout>
